@@ -1,19 +1,18 @@
 # ☁️ Google Cloud Fundamentals: Getting Started with Cloud Storage and Cloud SQL
 
-Este repositório documenta a execução do laboratório **"Google Cloud Fundamentals: Getting Started with Cloud Storage and Cloud SQL"**, realizado na plataforma **Google Cloud Skills Boost**.  
-O objetivo principal foi compreender e aplicar os conceitos fundamentais de **armazenamento, banco de dados e instâncias de computação** dentro do **Google Cloud Platform (GCP)**.
+Este repositório documenta o laboratório **"Google Cloud Fundamentals: Getting Started with Cloud Storage and Cloud SQL"**, realizado na **Google Cloud Skills Boost**.  
+O objetivo foi compreender e aplicar os conceitos de **armazenamento**, **banco de dados** e **instâncias de computação** no **Google Cloud Platform (GCP)**.
 
 ---
 
 ## 🧠 Objetivos do Laboratório
 
-Durante o experimento, foram realizados os seguintes passos:
+- Criar um **bucket no Cloud Storage** e armazenar uma imagem pública.  
+- Criar e configurar uma **instância do Cloud SQL (MySQL)**.  
+- Implantar uma **VM no Compute Engine** com **Apache e PHP**.  
+- Conectar a aplicação PHP ao **Cloud SQL**.  
+- Exibir uma imagem hospedada no **Cloud Storage** em uma página web.  
 
-- ✅ Criar um **bucket no Cloud Storage** e armazenar uma imagem pública.  
-- ✅ Criar e configurar uma **instância do Cloud SQL (MySQL)**.  
-- ✅ Implantar uma **máquina virtual no Compute Engine** com **Apache e PHP**.  
-- ✅ Conectar a aplicação PHP ao banco de dados do Cloud SQL.  
-- ✅ Exibir uma imagem hospedada no Cloud Storage em uma página web.  
 
 ---
 
@@ -30,14 +29,14 @@ Durante o laboratório foi criada uma instância de máquina virtual no **Google
 | **Memória RAM** | `4 GB` |
 | **Sistema Operacional** | `Debian GNU/Linux 12 (Bookworm)` |
 
-A instância foi configurada para executar o servidor **Apache2** e o interpretador **PHP**, utilizando o script de inicialização disponibilizado no laboratório.
+
 
 ![Instância bloghost](./images/1.png)
 
 ## 🌐 Configuração de Rede
 
-Durante a criação da instância **bloghost**, foi habilitada a opção de **Firewall** para permitir o tráfego **HTTP**.  
-Essa configuração garante que o servidor web Apache possa ser acessado externamente através da porta **80**, permitindo o acesso público ao site hospedado.
+O **firewall HTTP** foi habilitado para permitir tráfego na porta **80**, possibilitando o acesso público à aplicação web.
+
 
 | Configuração | Valor |
 |---------------|--------|
@@ -49,8 +48,8 @@ Essa configuração garante que o servidor web Apache possa ser acessado externa
 
 ## ⚙️ Automação de Inicialização (Startup Script)
 
-Durante o processo de criação da instância **bloghost**, foi configurado um **Startup Script** responsável por instalar e iniciar automaticamente os serviços necessários para a aplicação web.  
-Esse script garante que, ao iniciar a VM, o ambiente esteja pronto para hospedar aplicações PHP com suporte a banco de dados MySQL.
+Script executado automaticamente durante a criação da instância. Esse processo garante que o ambiente esteja pronto para execução de aplicações PHP.
+
 
 
 ![Comandos ](./images/3.png)
@@ -65,8 +64,36 @@ Após a criação da instância **bloghost**, a configuração de rede ficou da 
 | **Endereço IP Interno** | `10.128.0.2` |
 | **Endereço IP Externo (Público)** | `34.27.53.112` |
 
-O IP **interno** é utilizado para comunicação privada entre recursos dentro da mesma rede VPC, enquanto o IP **externo** permite o acesso público à instância via navegador ou cliente HTTP.
-
-
+O IP **interno** é usado para comunicação privada entre recursos dentro da mesma VPC, enquanto o IP **externo** permite acesso público via navegador ou cliente HTTP.
 
 ![Resumo da rede da instância](./images/4.png)
+
+---
+
+## 🗄️ Criação do Banco de Dados Cloud SQL (MySQL)
+
+Foi criada uma instância do **Cloud SQL** para hospedar o banco de dados **MySQL** utilizado pela aplicação PHP.  
+A configuração utilizou a edição **Enterprise (Sandbox)**, adequada para testes e integração com o Compute Engine.
+
+### ⚙️ Detalhes da Instância SQL
+
+| Parâmetro | Valor |
+|------------|--------|
+| **Banco de Dados** | MySQL 8.0 |
+| **Edição** | Enterprise |
+| **Plano** | Sandbox |
+| **vCPUs** | 2 |
+| **Memória RAM** | 8 GB |
+| **Armazenamento** | 10 GB |
+| **Conexão** | IP Público |
+
+![Criação do Cloud SQL MySQL](./images/6.png)
+
+---
+
+## ✅ Criação do Cloud SQL Concluída com Sucesso
+
+A instância do **Cloud SQL (MySQL 8.0)** foi criada com sucesso e está pronta para receber conexões da VM **bloghost**.  
+Com isso, a integração entre **Compute Engine**, **Cloud SQL** e **Cloud Storage** foi concluída com êxito.
+
+![Criação do Cloud SQL concluída](./images/8.png)
