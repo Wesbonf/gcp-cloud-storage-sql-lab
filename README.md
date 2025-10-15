@@ -94,6 +94,34 @@ A configuração utilizou a edição **Enterprise (Sandbox)**, adequada para tes
 ## ✅ Criação do Cloud SQL Concluída com Sucesso
 
 A instância do **Cloud SQL (MySQL 8.0)** foi criada com sucesso e está pronta para receber conexões da VM **bloghost**.  
-Com isso, a integração entre **Compute Engine**, **Cloud SQL** e **Cloud Storage** foi concluída com êxito.
+Com isso, a integração entre **Compute Engine**, **Cloud SQL** e **Cloud Storage** foi concluída com êxito e configurado um usuário para ter acesso ao banco de dados
 
 ![Criação do Cloud SQL concluída](./images/8.png)
+
+
+## 🔗 Configuração de Conexão do Cloud SQL
+
+Para permitir que a VM **bloghost** acesse o banco de dados, foi configurada uma **conexão autorizada** no Cloud SQL utilizando o **IP público da instância**.  
+O nome do acesso foi definido como **web front end**.
+
+- **IP autorizado:** IP público da VM `bloghost`
+- **Nome da conexão:** `web front end`
+
+![Conexão autorizada no Cloud SQL](./images/10.png)
+
+
+
+## 🌟 Teste Final da Aplicação Web
+
+Após configurar a VM, o Cloud SQL e o Cloud Storage, a aplicação PHP foi executada com sucesso.  
+A página web acessada via navegador exibiu:
+
+- Título e mensagem de boas-vindas: **"Hello, I'm wesbonf on Google Cloud"**  
+- Confirmação de conexão com o banco de dados: **"Connected successfully"**  
+
+
+
+### 📸 Captura de Tela
+![Teste final da aplicação web](./images/14.png)
+
+
